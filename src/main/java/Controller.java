@@ -1,12 +1,11 @@
 import Classes.AnimalRegistry;
-import Exception.*;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Scanner;
 
 public class Controller {
-    public static Boolean start(AnimalRegistry animalRegistry) throws IOException, InvalidWinningFrequencyValue, InvalidAmountValue, ParseException {
+    public static Boolean start(AnimalRegistry animalRegistry) throws IOException, ParseException {
         Scanner cs = new Scanner(System.in);
         View.menu();
 
@@ -17,7 +16,7 @@ public class Controller {
                 Model.inputAnimal(animalRegistry);
             }
             case 2 -> {
-                //Model.deleteAnimal();
+                Model.deleteAnimal(animalRegistry);
             }
             case 5 -> {
                 Model.showAllAnimals(animalRegistry);

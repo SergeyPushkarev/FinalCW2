@@ -8,10 +8,6 @@ import java.util.ArrayList;
 public class AnimalRegistry {
     ArrayList<Animal> animalList;
 
-    public AnimalRegistry(ArrayList<Animal> animalList) {
-        this.animalList = animalList;
-    }
-
     public AnimalRegistry() {
         this.animalList = new ArrayList<>();
     }
@@ -26,6 +22,10 @@ public class AnimalRegistry {
 
     public Animal get(int i) {
         return animalList.get(i);
+    }
+
+    public void deleteAnimal(int id) {
+        animalList.remove(id);
     }
 
     public void loadAnimals() throws ParseException {
