@@ -30,4 +30,11 @@ public abstract class Animal {
     public String getCommands() {
         return commands;
     }
+
+    public void learnCommand(String command) {
+        if (!this.commands.isEmpty()) {
+            this.commands = this.commands + ", ";
+        }
+        this.commands = this.commands + command;
+    }
 }

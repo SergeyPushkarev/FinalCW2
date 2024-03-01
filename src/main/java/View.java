@@ -33,10 +33,14 @@ public class View {
     }
 
     public static void enteringIDAnimal() {
-        System.out.println("Введите идентификатор животного, которого хотите удалить: ");
+        System.out.println("Введите идентификатор животного: ");
     }
 
     public static void readCountAnimals(int size) {
         System.out.println("Всего животных: " + size);
+    }
+
+    public static void readCommandsAnimal(String commands) {
+        System.out.println("Выбранное животное умеет: " + commands);
     }
 }

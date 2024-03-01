@@ -9,13 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Model {
-    /**
-     *
-     * @throws IOException ошибка при открытии/закрытии файла с игрушками
-     * @throws InvalidAmountValue ошибка ввода количества игрушки
-     * @throws InvalidWinningFrequencyValue ошибка ввода вероятности розыгрыша игрушки
-     */
-    public static void inputAnimal(AnimalRegistry animalRegistry) throws ParseException {
+    public static void inputAnimal(AnimalRegistry animalRegistry) throws InvalidTypeValue, InvalidDateValue, InvalidWeightValue {
 
         Scanner cs = new Scanner(System.in);
 
@@ -26,17 +20,29 @@ public class Model {
         String commands;
 
         View.enteringTypeAnimal();
-        animalType = cs.nextInt(); cs.nextLine();
+        try {
+            animalType = cs.nextInt(); cs.nextLine();
+        } catch (Exception e) {
+            throw new InvalidTypeValue("Введен некорректный номер типа животного.");
+        }
 
         View.enteringNameAnimal();
         animalName = cs.nextLine();
 
         View.enteringDateOfBirthAnimal();
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        dateOfBirth = df.parse(cs.nextLine());
+        try {
+            dateOfBirth = df.parse(cs.nextLine());
+        } catch (ParseException e) {
+            throw new InvalidDateValue("Дата введена в некорректном формате.");
+        }
 
         View.enteringWeightAnimal();
-        weight = cs.nextInt(); cs.nextLine();
+        try {
+            weight = cs.nextInt(); cs.nextLine();
+        } catch (Exception e) {
+            throw new InvalidWeightValue("Введен некорректный вес животного.");
+        }
 
         View.enteringCommandsAnimal();
         commands = cs.nextLine();
@@ -51,12 +57,48 @@ public class Model {
         }
     }
 
-    public static void deleteAnimal(AnimalRegistry animalRegistry) {
+    public static void deleteAnimal(AnimalRegistry animalRegistry) throws InvalidIDValue {
 
         Scanner cs = new Scanner(System.in);
         View.enteringIDAnimal();
 
-        animalRegistry.deleteAnimal(cs.nextInt()-1);
+        int id;
+        try {
+            id = cs.nextInt()-1;
+        } catch (Exception e) {
+            throw new InvalidIDValue("Введен некорректный идентификатор животного.");
+        }
+        animalRegistry.deleteAnimal(id);
+    }
+
+    public static void learnCommand(AnimalRegistry animalRegistry) throws InvalidIDValue {
+
+        Scanner cs = new Scanner(System.in);
+        View.enteringIDAnimal();
+
+        int id;
+        try {
+            id = cs.nextInt()-1; cs.nextLine();
+        } catch (Exception e) {
+            throw new InvalidIDValue("Введен некорректный идентификатор животного.");
+        }
+
+        View.enteringCommandsAnimal();
+        String command = cs.nextLine();
+        animalRegistry.get(id).learnCommand(command);
+    }
+
+    public static void readCommand(AnimalRegistry animalRegistry) throws InvalidIDValue {
+        Scanner cs = new Scanner(System.in);
+        View.enteringIDAnimal();
+
+        int id;
+        try {
+            id = cs.nextInt()-1; cs.nextLine();
+        } catch (Exception e) {
+            throw new InvalidIDValue("Введен некорректный идентификатор животного.");
+        }
+        View.readCommandsAnimal(animalRegistry.get(id).getCommands());
     }
 
     public static void showAllAnimals(AnimalRegistry animalRegistry) throws IOException {
