@@ -7,8 +7,8 @@ sergey@sergey-VirtualBox:~/final_control_work$ cat > Pets.txt
 Кошки
 Хомяки
 
-sergey@sergey-VirtualBox:~/final_control_work$ cat > Pack animals.txt
-cat: animals.txt: Нет такого файла или каталога
+sergey@sergey-VirtualBox:~/final_control_work$ cat > Pack Classes.Animal.txt
+cat: Classes.Animal.txt: Нет такого файла или каталога
 sergey@sergey-VirtualBox:~/final_control_work$ cat > Pack_animals.txt
 Лошади
 Верблюды
@@ -28,19 +28,19 @@ Human_Friends.txt  Pack_animals.txt  Pets.txt
 
 2. Работа с директориями в Linux
 
-sergey@sergey-VirtualBox:~/final_control_work$ mkdir animals
-sergey@sergey-VirtualBox:~/final_control_work$ mv Human_Friends.txt /home/sergey/final_control_work/animals/
+sergey@sergey-VirtualBox:~/final_control_work$ mkdir Classes.Animal
+sergey@sergey-VirtualBox:~/final_control_work$ mv Human_Friends.txt /home/sergey/final_control_work/Classes.Animal/
 sergey@sergey-VirtualBox:~/final_control_work$ ls
-animals  Pack_animals.txt  Pets.txt
-sergey@sergey-VirtualBox:~/final_control_work$ cd animals/
-sergey@sergey-VirtualBox:~/final_control_work/animals$ ls
+Classes.Animal  Pack_animals.txt  Pets.txt
+sergey@sergey-VirtualBox:~/final_control_work$ cd Classes.Animal/
+sergey@sergey-VirtualBox:~/final_control_work/Classes.Animal$ ls
 Human_Friends.txt
 
 3. Работа с MySQL в Linux. “Установить MySQL на вашу вычислительную машину ”
 
 ##### Для начала я скачал пакет выпуска с официального сайта. После запустил его с помощью dpkg -i
 
-sergey@sergey-VirtualBox:~/final_control_work/animals$ cd --
+sergey@sergey-VirtualBox:~/final_control_work/Classes.Animal$ cd --
 sergey@sergey-VirtualBox:~$ cd Загрузки/
 sergey@sergey-VirtualBox:~/Загрузки$ ls
 mysql-apt-config_0.8.29-1_all.deb
